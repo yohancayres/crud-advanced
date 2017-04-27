@@ -2,9 +2,9 @@
 /**
  * This class is a Crud with advanced methods. Provides agility and productivity in development.
  *
- * @author Yohan
+ * @author Yohan Cayres <yohan.cayres@hotmail.com> 
  */
-class Crud extends DataBase {
+abstract class Crud extends DataBase {
 
     public $table, $tableCols;
 
