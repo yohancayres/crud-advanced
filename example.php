@@ -2,7 +2,6 @@
 require_once 'dbconfig.php';
 require_once 'autoload.php';
 
-/*
 
 /* Insert example */
 $user = new User(['name' => 'Yohan Lopes', 'email' => 'yohan@mail.com', 'password'=> md5('somepassword')]);
