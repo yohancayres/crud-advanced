@@ -2,7 +2,7 @@
 
 ### This class is a Crud with advanced methods. Provides agility and productivity in development.
 
-Method overview
+All the methods and a description about them will be listed below. All class Crud.class.php is documented.
 
 ## Generic Methods
 - _set($key, $value) - Set or change the value of an attribute;
