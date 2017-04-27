@@ -1,12 +1,6 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Crud
+ * This class is a Crud with advanced methods. Provides agility and productivity in development.
  *
  * @author Yohan
  */
