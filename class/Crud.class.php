@@ -40,7 +40,7 @@ abstract class Crud extends DataBase {
      * Inserts the object into the database.
      * @return type
      */
-    
+
     public function dbInsert() {
         if (isset($this->tableCols)) {
             $rowKey = array();

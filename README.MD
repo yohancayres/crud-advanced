@@ -1,4 +1,4 @@
-# Crud-Avanced
+# Crud-Advanced
 
 ### This class is a Crud with advanced methods. Provides agility and productivity in development.
 
