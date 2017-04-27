@@ -2,6 +2,8 @@
 require_once 'dbconfig.php';
 require_once 'autoload.php';
 
+/*
+
 /* Insert example */
 $user = new User(['name' => 'Yohan Lopes', 'email' => 'yohan@mail.com', 'password'=> md5('somepassword')]);
 
@@ -18,4 +20,5 @@ $user->_set('email', 'yohan@newmail.com');
 if(!$user->dbCheckExists('email')){
 	$user->dbUpdateAll();
 }
+
 print_r($user);

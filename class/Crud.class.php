@@ -169,7 +169,7 @@ class Crud extends DataBase {
         @param String $values
         @return array
     */
-    public function FetchById($id, $values = "*") {
+    public function fetchById($id, $values = "*") {
         $stmt = DataBase::prepare("SELECT " . $values . " FROM " . $this->table . " WHERE id = :id ");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -183,7 +183,7 @@ class Crud extends DataBase {
         @param String $values
         @return array
     */
-    public function FetchRandom($values = "*") {
+    public function fetchRandom($values = "*") {
         $stmt = DataBase::prepare("SELECT " . $values . " FROM " . $this->table . " ORDER BY rand() LIMIT 1");
         $stmt->execute();
 
@@ -197,7 +197,7 @@ class Crud extends DataBase {
         @param String $LoadAtts
         @return array
     */
-    public function FetchAll($where = null, $loadAtts = "*") {
+    public function fetchAll($where = null, $loadAtts = "*") {
         if (is_array($where)) {
             $column = key($where);
             $value = $where[$column];
