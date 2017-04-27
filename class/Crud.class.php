@@ -8,13 +8,13 @@ abstract class Crud extends DataBase {
 
     public $table, $tableCols;
 
-    /*
-        * This is the default constructor
-        * This method can receive an array containing the attribute definition.
-        @acess public
-        @param Array $objectData
-        @return object
-    */
+
+    /**
+     * This is the default constructor
+     * This method can receive an array containing the attribute definition.
+     * @param array|array $objectData Array containing the attribute definition.
+     * @return type
+     */
 
     public function __construct(array $objectData = array()) {
         if (count($objectData) > 0) {
@@ -35,11 +35,12 @@ abstract class Crud extends DataBase {
         }
     }
 
-    /*
-        * Inserts the object into the database.
-        @acess public
-        @return object
-    */
+
+    /**
+     * Inserts the object into the database.
+     * @return type
+     */
+    
     public function dbInsert() {
         if (isset($this->tableCols)) {
             $rowKey = array();
@@ -55,11 +56,11 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*
-        * Apply the update of all attributes of the object in the database.
-        @acess public
-        @return object
-    */
+
+    /**
+     * Apply the update of all attributes of the object in the database.
+     * @return type
+     */
 
     public function dbUpdateAll() {
         if (isset($this->tableCols) && isset($this->id)) {
@@ -81,12 +82,13 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*
-        * Applies the update of specified attributes of the object to the database.
-        @acess public
-        @param String $rows
-        @return object
-    */
+
+    /**
+     * Applies the update of specified attributes of the object to the database.
+     * @param type $atts Specifies the attributes that will be updated 
+     * @return type
+     */
+
     public function dbUpdateRows($atts) {
         $rows = explode(",", $atts);
 
@@ -106,16 +108,17 @@ abstract class Crud extends DataBase {
         }
     }
 
-    /*
-        * Creates a one-to-one relationship.
-        * example: $this->hasOne('City', 'city_id', 'id', '*');
-        @acess public
-        @param String $className
-        @param String $thisAttName
-        @param String $classAttName
-        @param String $loadAtts
-        @return object
-    */
+   
+    /**
+     * Creates a one-to-one relationship.
+     * example: $this->hasOne('City', 'city_id', 'id', '*');
+     * @param type $className Reference class name
+     * @param type $thisAttName Foreign key attribute of this object
+     * @param type|string $classAttName Referenced class primary key
+     * @param type|string $loadAtts Attributes that will be loaded
+     * @return type
+     */
+
     public function hasOne($className, $thisAttName, $classAttName = 'id', $loadAtts = "*") {
         if (isset($this->$thisAttName)) {
             if (!is_object(@$this->$className)) {
@@ -129,16 +132,16 @@ abstract class Crud extends DataBase {
         }
     }
 
-    /*
-        * Creates a one-to-many relationship.
-        * example: $this->hasMany('Contact', 'id', 'user_id', '*');
-        @acess public
-        @param String $className
-        @param String $thisAttName
-        @param String $classAttName
-        @param String $loadAtts
-        @return object
-    */
+
+    /**
+     * Creates a one-to-many relationship.
+     * example: $this->hasMany('Contact', 'id', 'user_id', '*');
+     * @param type $className Reference class name
+     * @param type $thisAttName Primary key of this object
+     * @param type $classAttName Foreign key in referenced class
+     * @param type|string $loadAtts Attributes that will be loaded
+     * @return type
+     */
 
     public function hasMany($className, $thisAttName, $classAttName, $loadAtts = "*") {
         if (isset($this->$thisAttName)) {
@@ -155,14 +158,13 @@ abstract class Crud extends DataBase {
     }
 
 
+    /**
+     * Fetch a row by attribute id
+     * @param type $id Registry ID
+     * @param type|string $values Columns that will be selected
+     * @return type
+     */
 
-    /*
-        * Fetch a row by attribute id
-        @acess public
-        @param int $id
-        @param String $values
-        @return array
-    */
     public function fetchById($id, $values = "*") {
         $stmt = DataBase::prepare("SELECT " . $values . " FROM " . $this->table . " WHERE id = :id ");
         $stmt->bindParam(':id', $id);
@@ -171,12 +173,13 @@ abstract class Crud extends DataBase {
         return $stmt->fetch();
     }
 
-    /*
-        * Fetch a random row in this table
-        @acess public
-        @param String $values
-        @return array
-    */
+
+    /**
+     * Fetch a random row in this table
+     * @param type|string $values Columns that will be selected
+     * @return type
+     */
+
     public function fetchRandom($values = "*") {
         $stmt = DataBase::prepare("SELECT " . $values . " FROM " . $this->table . " ORDER BY rand() LIMIT 1");
         $stmt->execute();
@@ -184,13 +187,14 @@ abstract class Crud extends DataBase {
         return $stmt->fetch();
     }
 
-    /*
-        * Fetch one or more rows, you can specify the condition by specifying which field to fetch.
-        @acess public
-        @param String $where
-        @param String $LoadAtts
-        @return array
-    */
+
+    /**
+     * Fetch one or more rows, you can specify the condition by specifying which field to fetch.
+     * @param type|null $where Attribute Name
+     * @param type|string $loadAtts Columns that will be selected
+     * @return type
+     */
+
     public function fetchAll($where = null, $loadAtts = "*") {
         if (is_array($where)) {
             $column = key($where);
@@ -205,15 +209,16 @@ abstract class Crud extends DataBase {
         return $stmt->fetchAll();
     }
 
-     /*
-        * Set a attribute values, you can specify a validation type and a maximum size.
-        @acess public
-        @param String $key
-        @param String $value
-        @param String $validation
-        @param int $maxsize
-        @return void
-    */
+
+    /**
+     * Set a attribute values, you can specify a validation type and a maximum size.
+     * @param type $key Attribute name
+     * @param type $value Attribute value
+     * @param type|null $validation Type of validation (optional)
+     * @param type|int $maxsize Maxsize (optional)
+     * @return type
+     */
+
     public function _set($key, $value, $validation = NULL, $maxsize = 255) {
 
         if ($validation == "array" || @strlen($value) <= $maxsize) {
@@ -252,21 +257,24 @@ abstract class Crud extends DataBase {
         }
     }
 
-    /*
-        * Get a attribute value
-        @acess public
-        @param String $key
-    */
+
+    /**
+     * Get a attribute value
+     * @param type $key Attribute Name
+     * @return type
+     */
+
     public function _get($key) {
         return $this->{$key};
     }
 
-    /*
-        * Get a attribute value
-        @acess public
-        @param String $key
-        @return bool
-    */
+
+    /**
+     * Get a attribute value
+     * @param array $params Attribute Name Array 
+     * @return type
+     */
+
     public function requiredParam(array $params) {
         foreach ($params as $param) {
             if (!isset($this->{$param})) {
@@ -276,12 +284,14 @@ abstract class Crud extends DataBase {
         return true;
     }
 
-    /*  
-        * Loads data from the database to the object, You can specify which fields will be loaded. This method uses the ID attribute as a reference.
-        @acess public
-        @param String $values
-        @return object
-    */
+
+    /**
+     * Loads data from the database to the object, You can specify which fields will be loaded. 
+     * This method uses the ID attribute as a reference.
+     * @param type|string $values Columns that will be selected
+     * @return type
+     */
+
     public function dbLoadData($values = '*') {
         if (isset($this->id)) {
             $stmt = DataBase::prepare("SELECT " . $values . " FROM " . $this->table . " WHERE id = :id ");
@@ -296,13 +306,15 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*  
-        * Loads data from the database to the object, You can specify which fields will be loaded. This method uses the attribute specified in the first parameter as a reference.
-        @acess public
-        @param String $attr
-        @param String $values
-        @return object
-    */
+
+    /**
+     * Loads data from the database to the object, You can specify which fields will be loaded. 
+     * This method uses the attribute specified in the first parameter as a reference.
+     * @param type|string $attr Attribute Name for the where clause
+     * @param type|string $values Columns that will be selected
+     * @return type
+     */
+
     public function dbLoadDataBy($attr = "id", $values = "*") {
         if (isset($this->$attr)) {
             $stmt = DataBase::prepare("SELECT " . $values . " FROM " . $this->table . " WHERE " . $attr . " = :attr ");
@@ -317,12 +329,13 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*  
-        * Load data from array to Object attributes
-        @acess public
-        @param Array $data
-        @return array
-    */
+
+    /**
+     * Load data from array to Object attributes
+     * @param array $data  Attribute Definition Array
+     * @return type
+     */
+
     public function LoadData(array $data) {
         foreach ($data as $key => $value) {
             $this->_set($key, $value);
@@ -330,12 +343,12 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*  
-        * Remove object from the database, using the id attribute as reference.
-        @acess public
-        @param Array $data
-        @return object
-    */
+
+    /**
+     * Remove object from the database, using the id attribute as reference.
+     * @return type
+     */
+
     public function dbRemove() {
         if (isset($this->id)) {
             $stmt = DataBase::prepare("DELETE FROM " . $this->table . " WHERE id = :id");
@@ -347,12 +360,13 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*  
-        * Checks whether the record already exists in the database, by the defined attribute.
-        @acess public
-        @param Array $data
-        @return int
-    */
+
+    /**
+     * Checks whether the record already exists in the database, by the defined attribute.
+     * @param type|string $attr Attribute Name
+     * @return type
+     */
+
     public function dbCheckExists($attr = 'id') {
         $stmt = DataBase::prepare("SELECT id FROM " . $this->table . " WHERE " . $attr . " = :attr");
         $stmt->bindParam(':attr', $this->$attr);
@@ -360,13 +374,14 @@ abstract class Crud extends DataBase {
         return $stmt->rowCount();
     }
 
-    /*  
-        * Updates an attribute in the registry
-        @acess public
-        @param String $attr
-        @param String $newvalue
-        @return int
-    */
+
+    /**
+     * Updates an attribute in the registry
+     * @param type $attr Attribute Name
+     * @param type $newvalue New Value
+     * @return type
+     */
+
     public function dbUpdate($attr, $newvalue) {
         if (isset($this->id)) {
             $stmt = DataBase::prepare("UPDATE  " . $this->table . " SET " . $attr . " = :value WHERE id = :id");
@@ -379,13 +394,14 @@ abstract class Crud extends DataBase {
         return $this;
     }
 
-    /*  
-        * Updates a record by incrementing an attribute.
-        @acess public
-        @param String $attr
-        @param String $amount
-        @return object
-    */
+
+    /**
+     * Updates a record by incrementing an attribute.
+     * @param type $attr Attribute Name
+     * @param type $amount Amount of Increase (can be negative)
+     * @return type
+     */
+
     public function dbUpdateIncrease($attr, $amount) {
         if (isset($this->id)) {
             $stmt = DataBase::prepare("UPDATE  " . $this->table . " SET " . $attr . " = " . $attr . " + :value WHERE id = :id");
@@ -399,13 +415,13 @@ abstract class Crud extends DataBase {
     }
 
 
-    /*  
-        * Searches for one or more records using the LIKE command
-        @acess public
-        @param String $attr
-        @param String $dados
-        @return array
-    */
+    /**
+     * Searches for one or more records using the LIKE command
+     * @param type $attr Atribute Name
+     * @param type|string $data Columns that will be selected 
+     * @return type
+     */
+
     public function dbSearch($attr, $data = "*") {
         $stmt = DataBase::prepare("SELECT " . $data . " FROM " . $this->table . " WHERE " . $attr . " LIKE :value");
         $q = "%" . $this->$attr . "%";
@@ -415,12 +431,13 @@ abstract class Crud extends DataBase {
         return $stmt->fetchAll();
     }
 
-    /*  
-        * Returns an array of object attributes
-        @acess public
-        @param String $params
-        @return array
-    */
+   
+    /**
+     * Returns an array of object attributes
+     * @param array|array $params Attribute Names Array
+     * @return type
+     */
+
     public function getParamArray(array $params = array()) {
         if (count($params) == 0) {
             $arrayData = $this->tableCols;
