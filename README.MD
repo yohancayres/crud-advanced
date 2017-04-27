@@ -16,7 +16,7 @@ All the methods and a description about them will be listed below. All class Cru
 - dbUpdateAll() - Refreshes all attributes in the database;
 - dbUpdateRows ($atts) - Updates specific attributes in the database;
 - dbUpdate($attr, $newvalue) - Defines and updates the value of an attribute in the database;
-- dbUpdateIncrease($attr, $amount) - Updates an attribute by incrementing its value;
+- dbUpdateIncrease($attr, $amount) - Updates an attribute by incrementing its value (this value can be negative);
 - dbSearch($attr, $data) - Searches the database;
 - dbRemove() - Removes a record from the database;
 - dbCheckExists($attr) - Checks whether a record already exists;
