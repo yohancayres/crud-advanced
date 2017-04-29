@@ -2,6 +2,7 @@
 require_once '../vendor/autoload.php';
 
 use CrudAdvanced\DataBase;
+use CrudAdvanced\Val;
 use CrudAdvanced\Crud;
 
 /**

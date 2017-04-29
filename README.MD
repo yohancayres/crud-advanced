@@ -4,14 +4,44 @@
 
 All the methods and a description about them will be listed below. All class Crud.class.php is documented.
 
-## Generic Methods
+## Installation 
+### Install Manually
+You can install CrudAdanved manually
+```php
+require_once "src/CrudAdvanced/DataBase.php"
+require_once "src/CrudAdvanced/Val.php"
+require_once "src/CrudAdvanced/Crud.php"
+
+use CrudAdvanced\DataBase;
+use CrudAdvanced\Val;
+use CrudAdvanced\Crud;
+```
+
+### Install with Composer
+You can install CrudAdanved with composer
+With command:
+```php
+composer require yohancayres/crud-advanced
+```
+or adding in composer.json
+```json 
+{
+    "require": {
+        "yohancayres/crud-advanced": "dev-master"
+    }
+}
+```
+
+## Available Methods
+
+### Generic Methods
 - _set($key, $value) - Set or change the value of an attribute;
 - _get($key) - Get the value of an attribute;
 - loadData(array $data) - Loads data from an array to object attributes;
 - requiredParam(array $params) - Checks whether the required attribute exists;
 - getParamArray(array $params) - Get an array of object attributes;
 
-## Databases Methods
+### Databases Methods
 - dbInsert() - Inserts the attributes of the object in the database;
 - dbUpdateAll() - Refreshes all attributes in the database;
 - dbUpdateRows ($atts) - Updates specific attributes in the database;
@@ -26,6 +56,6 @@ All the methods and a description about them will be listed below. All class Cru
 - fetchRandom($values) - Gets a random record of the database;
 - fetchAll($where, $loadAtts) - Get all records from the table;
 
-## Relationship
+### Relationship
 - hasOne($className, $thisAttName, $classAttName, $loadAtts)- Creates a one-to-one relationship;
 - hasMany($className, $thisAttName, $classAttName, $loadAtts) - Creates a one-to-many relationship;

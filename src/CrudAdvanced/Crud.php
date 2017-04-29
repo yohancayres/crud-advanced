@@ -8,7 +8,9 @@
  * 
  * @version 1.0
  */
+
 namespace CrudAdvanced;
+
 
 abstract class Crud extends DataBase {
 
