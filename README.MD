@@ -42,16 +42,16 @@ or adding in composer.json
 - getParamArray(array $params) - Get an array of object attributes;
 
 ### Databases Methods
-- dbInsert() - Inserts the attributes of the object in the database;
-- dbUpdateAll() - Refreshes all attributes in the database;
-- dbUpdateAtts ($atts) - Updates specific attributes in the database;
-- dbUpdate($attr, $newvalue) - Defines and updates the value of an attribute in the database;
+- [dbInsert()]('#insert-new-user-with-dbinsert') - Inserts the attributes of the object in the database;
+- [dbUpdateAll()]('#update-some-row-with-dbupdateall-or-dbupdateatts') - Refreshes all attributes in the database;
+- [dbUpdateAtts($atts)]('#update-some-row-with-dbupdateall-or-dbupdateatts') - Updates specific attributes in the database;
+- [dbUpdate($attr, $newvalue)]('#update-directly') - Defines and updates the value of an attribute in the database;
 - dbUpdateIncrease($attr, $amount) - Updates an attribute by incrementing its value (this value can be negative);
 - dbSearch($attr, $data) - Searches the database;
 - dbRemove() - Removes a record from the database;
 - dbCheckExists($attr) - Checks whether a record already exists;
 - dbLoadData($values) - Loads all data from the database;
-- dbLoadDataBy($attr, $values) - Loads all database data using an attribute defined by the first parameter;
+- [dbLoadDataBy($attr, $values)]('##dbloaddataby') - Loads all database data using an attribute defined by the first parameter;
 - fetchById($id, $values) - Get database record;
 - fetchRandom($values) - Gets a random record of the database;
 - fetchAll($where, $loadAtts) - Get all records from the table;
