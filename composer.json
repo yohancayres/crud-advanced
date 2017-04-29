@@ -1,6 +1,7 @@
 {
     "name": "yohan/crud-avanced",
     "description": "This class is a Crud with advanced methods. Provides agility and productivity in development. Edit",
+    "license" : "MIT",
     "authors": [
         {
             "name": "Yohan Cayres",
