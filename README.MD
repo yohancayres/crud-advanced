@@ -44,7 +44,7 @@ or adding in composer.json
 ### Databases Methods
 - dbInsert() - Inserts the attributes of the object in the database;
 - dbUpdateAll() - Refreshes all attributes in the database;
-- dbUpdateRows ($atts) - Updates specific attributes in the database;
+- dbUpdateAtts ($atts) - Updates specific attributes in the database;
 - dbUpdate($attr, $newvalue) - Defines and updates the value of an attribute in the database;
 - dbUpdateIncrease($attr, $amount) - Updates an attribute by incrementing its value (this value can be negative);
 - dbSearch($attr, $data) - Searches the database;
@@ -59,3 +59,58 @@ or adding in composer.json
 ### Relationship
 - hasOne($className, $thisAttName, $classAttName, $loadAtts)- Creates a one-to-one relationship;
 - hasMany($className, $thisAttName, $classAttName, $loadAtts) - Creates a one-to-many relationship;
+
+
+## Examples
+
+#### Create class with Crud
+```php
+use CrudAdvanced\DataBase;
+use CrudAdvanced\Val;
+use CrudAdvanced\Crud;
+
+class User extends Crud {
+
+	/* Database table definition */
+	public $table = "users"; // Define Table name
+	public $tableCols = ['name', 'email', 'password']; // Define table cols
+
+	/*
+	 * Other class methods and attributes can be defined freely.
+	 */
+}
+```
+
+
+#### Insert new user with dbInsert()
+```php
+$user = new User([
+	'name' => 'Yohan Cayres',
+	'email' => 'yohan.cayres@mail.com',
+	'password' => md5('somepassword')
+]); // Create new object type User
+
+$user->dbInsert(); // Insert at the Database
+```
+
+### dbLoadDataBy()
+Loads a database attributes.
+```php
+$user->dbLoadDataBy('email', 'id'); // Loads a database attribute by email.
+echo $user->_get('id');
+```
+
+#### Update some row with dbUpdateAll() or dbUpdateAtts()
+This method needs the id attribute, you can get it through dbLoadDataBy();
+```php
+$user->_set('email', 'newMail@mail.com'); // This will set a new email
+
+$user->dbUpdateAtts('email'); // Only the attribute 'email' will be updated
+$user->dbUpdateAll(); // All the attributes will be updated
+```
+
+#### Update directly
+This method needs the id attribute, you can get it through dbLoadDataBy();
+```php
+$user->dbUpdate('email', 'newMail@mail.com'); // Set and update directly.
+```

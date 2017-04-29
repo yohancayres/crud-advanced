@@ -96,7 +96,7 @@ abstract class Crud extends DataBase {
      * @return type
      */
 
-    public function dbUpdateRows($atts) {
+    public function dbUpdateAtts($atts) {
         $rows = explode(",", $atts);
 
         if (isset($rows) && isset($this->id)) {
@@ -391,10 +391,11 @@ abstract class Crud extends DataBase {
 
     public function dbUpdate($attr, $newvalue) {
         if (isset($this->id)) {
+            $this->$attr = $newvalue;
             $stmt = DataBase::prepare("UPDATE  " . $this->table . " SET " . $attr . " = :value WHERE id = :id");
             $stmt->bindParam(':value', $newvalue);
             $stmt->bindParam(':id', $this->id);
-            return $stmt->execute();
+            $stmt->execute();
         } else {
             throw new Exception('Ocorreu um erro, o ID não está presete.');
         }
