@@ -21,7 +21,7 @@ use CrudAdvanced\Crud;
 You can install CrudAdanved with composer
 With command:
 ```bash
-composer require yohancayres/crud-advanced dev-master
+composer require yohancayres/crud-advanced
 ```
 or adding in composer.json
 ```json 
