@@ -93,7 +93,7 @@ $user = new User([
 $user->dbInsert(); // Insert at the Database
 ```
 
-### dbLoadDataBy()
+#### dbLoadDataBy()
 Loads a database attributes.
 ```php
 $user->dbLoadDataBy('email', 'id'); // Loads a database attribute by email.
