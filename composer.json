@@ -8,8 +8,8 @@
             "email": "yohan.cayres@hotmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
+        "minimum-stability": "dev",
         "php": ">=5.3.3"
     },
     "autoload": {
