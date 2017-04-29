@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "minimum-stability": "dev",
+        "minimum-stability": "stable",
         "php": ">=5.3.3"
     },
     "autoload": {
