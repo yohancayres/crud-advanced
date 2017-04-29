@@ -1,7 +1,10 @@
 {
     "name": "yohan/crud-advanced",
     "description": "This class is a Crud with advanced methods. Provides agility and productivity in development. Edit",
+    "keywords": ["crud", "yohancayres"],
     "license" : "MIT",
+    "homepage": "https://github.com/yohancayres/crud-advanced",
+    "type": "library",
     "authors": [
         {
             "name": "Yohan Cayres",
@@ -9,6 +12,7 @@
         }
     ],
     "require": {
+        "php": "^7.0",
     },
     "autoload": {
         "psr-0": {
