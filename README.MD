@@ -63,9 +63,17 @@ or adding in composer.json
 
 ## Examples
 
-#### Create class with Crud
+#### Connect to the Database
+First of all, the application needs information to connect to the database
 ```php
 use CrudAdvanced\DataBase;
+
+DataBase::configure('127.0.0.1', 'root', 'password', 'dbteste');
+```
+
+#### Using Crud
+To create a class and use the Crud Methods, you need to extends Crud to your class.
+```php
 use CrudAdvanced\Val;
 use CrudAdvanced\Crud;
 
@@ -83,6 +91,7 @@ class User extends Crud {
 
 
 #### Insert new user with dbInsert()
+This method will insert all the attributes to the database. Be aware of the name of the attributes, they must be exactly the same as the fields in the database.
 ```php
 $user = new User([
 	'name' => 'Yohan Cayres',
@@ -94,9 +103,9 @@ $user->dbInsert(); // Insert at the Database
 ```
 
 #### dbLoadDataBy()
-Loads a database attributes.
+This method will load attributes from database, making the search for the defined attribute.
 ```php
-$user->dbLoadDataBy('email', 'id'); // Loads a database attribute by email.
+$user->dbLoadDataBy('email', 'id,name,password'); // Loads a database attribute by email.
 echo $user->_get('id');
 ```
 
