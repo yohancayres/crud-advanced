@@ -20,7 +20,7 @@ use CrudAdvanced\Crud;
 ### Install with Composer
 You can install CrudAdanved with composer
 With command:
-```php
+```bash
 composer require yohancayres/crud-advanced dev-master
 ```
 or adding in composer.json
