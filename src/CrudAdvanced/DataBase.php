@@ -10,14 +10,27 @@
  *
  * @author Yohan
  */
-abstract class DataBase {
+
+namespace CrudAdvanced;
+
+use PDO;
+
+class DataBase {
 
     //put your code here
     private static $connection = null;
-    private static $host = DBHOST;
-    private static $user = DBUSER;
-    private static $pass = DBPASS;
-    private static $base = DBNAME;
+    private static $host;
+    private static $user;
+    private static $pass;
+    private static $base;
+
+
+    public static function configure($dbHost = DBHOST, $dbUser = DBUSER, $dbPass = DBPASS, $dbName = DBNAME){
+        self::$host = $dbHost;
+        self::$user = $dbUser;
+        self::$pass = $dbPass;
+        self::$base = $dbName;
+    }
 
     public static function connect() {
 

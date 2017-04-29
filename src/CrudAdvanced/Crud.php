@@ -4,10 +4,11 @@
  *
  * @author Yohan Cayres <yohan.cayres@hotmail.com> 
  */
+namespace CrudAdvanced;
+
 abstract class Crud extends DataBase {
 
     public $table, $tableCols;
-
 
     /**
      * This is the default constructor

@@ -10,6 +10,9 @@
  *
  * @author Yohan
  */
+
+namespace CrudAdvanced;
+
 class Val {
 
     public static function isEmail($str) {
