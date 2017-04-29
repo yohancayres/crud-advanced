@@ -7,7 +7,9 @@
             "email": "yohan.cayres@hotmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
+        "php": ">=5.3.3",
     },
     "autoload": {
         "psr-0": {
