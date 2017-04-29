@@ -3,6 +3,10 @@
  * This class is a Crud with advanced methods. Provides agility and productivity in development.
  *
  * @author Yohan Cayres <yohan.cayres@hotmail.com> 
+ * 
+ * @link https://github.com/yohancayres/crud-advanced/
+ * 
+ * @version 1.0
  */
 namespace CrudAdvanced;
 
