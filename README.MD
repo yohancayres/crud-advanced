@@ -8,9 +8,9 @@ All the methods and a description about them will be listed below. All class Cru
 ### Install Manually
 You can install CrudAdanved manually
 ```php
-require_once "src/CrudAdvanced/DataBase.php"
-require_once "src/CrudAdvanced/Val.php"
-require_once "src/CrudAdvanced/Crud.php"
+require_once "src/CrudAdvanced/DataBase.php";
+require_once "src/CrudAdvanced/Val.php";
+require_once "src/CrudAdvanced/Crud.php";
 
 use CrudAdvanced\DataBase;
 use CrudAdvanced\Val;
@@ -123,3 +123,6 @@ This method needs the id attribute, you can get it through dbLoadDataBy();
 ```php
 $user->dbUpdate('email', 'newMail@mail.com'); // Set and update directly.
 ```
+
+## Hosting Options
+[Web Hosting](https://hostmf.com.br)  [VPS Windows](https://hostmf.com.br/vps-windows)  [VPS Linux](https://hostmf.com.br/vps-linux)
